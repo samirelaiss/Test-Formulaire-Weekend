@@ -3,8 +3,8 @@
 ## Contexte
 Test automatisé d'un formulaire de destination week-end avec validation métier et intégration API géographique.
 
-Technologies : Python, Selenium, Pytest  
-Approche : Page Object Pattern, tests paramétrés, priorisation business  
+**Technologies** : Python, Selenium, Pytest  
+**Approche** : Page Object Pattern, tests paramétrés  
 
 ## Installation et Exécution
 
@@ -28,74 +28,56 @@ pytest -v
 # Tests priorité 1 uniquement  
 pytest tests/test_formulaire_core.py -v
 
-# Tests de sécurité
-pytest tests/test_formulaire_core.py::TestFormulaireCore::test_xss_protection -v
-
 # Tests avec rapport HTML
 pytest --html=report.html --self-contained-html
-
-# Avec logging détaillé
-pytest -v | tee test_execution.log
 ```
-
-### Techniques
-- Gestion robuste des chemins : Utilisation de `os.path` pour une meilleure portabilité
-- Journalisation détaillée : Logging complet pour le débogage
-- Test de sécurité XSS : Vérification de la protection contre les injections
-- Gestion des erreurs API : Tests pour les cas d'indisponibilité de l'API
-- Validation des formats : Tests paramétrés pour email/téléphone
 
 ## Stratégie de Test
 
 ### Priorisation (2h max)
-1. Priorité 1 : 
-   - Validation formulaire
-   - Règles métier critiques
-   - Tests de sécurité XSS
+1. **Priorité 1** (60 min) :  
+   - Validation formulaire  
+   - Règles métier critiques  
 
-2. Priorité 2 : 
-   - Intégration API
-   - Fonctionnalités UI
-   - Gestion des erreurs
+2. **Priorité 2** (30 min) :  
+   - Intégration API  
+   - Fonctionnalités UI  
 
-3. Documentation : 
-   - README et structure
-   - Logging des tests
-
+3. **Documentation** (15 min) :  
+   - README et structure projet  
 
 ## Architecture
 
 ```
 test-formulaire-weekend/
 ├── tests/                   
-│   ├── test_formulaire_core.py     # Tests critiques + sécurité
-│   └── test_api_integration.py     # Tests API avec gestion erreurs
+│   ├── test_formulaire_core.py     # Tests principaux
+│   └── test_api_integration.py     # Tests API
 ├── pages/                   
-│   └── formulaire_page.py          # PO avec logging intégré
-├── conftest.py             # Configuration pytest + logging
+│   └── formulaire_page.py          # Page Object
+├── conftest.py             # Configuration pytest
 ├── requirements.txt        
 └── README.md              
 ```
 
-
 ## Résultats
 
-Métriques :
-- 8 tests automatisés
-- ~90% de couverture fonctionnelle
-- Logs complets dans `test_execution.log`
+**Métriques** :
+- 6 tests automatisés  
+- Couverture des cas critiques  
+- Temps d'exécution : < 2 minutes  
 
-Points forts :
-- Monitoring via système de logging
-- Documentation technique complète
+**Points forts** :
+- Architecture modulaire  
+- Tests paramétrés  
+- Intégration API géographique  
 
 ## Prochaines améliorations possibles
-- Tests multi-navigateurs
-- Validation des formats email/téléphone côté client
-- Tests de performance (load time)
-- Intégration continue (GitHub Actions)
+- Tests multi-navigateurs  
+- Intégration continue  
+- Validation des formats de saisie  
 
 ---
-Développé par : Samir EL AISSAOUY
-Date : 07/07/2025
+**Développé par** : Samir EL AISSAOUY  
+**Date** : 07/07/2025  
 ```
