@@ -50,3 +50,7 @@ class FormulairePage:
         return self.wait.until(
             EC.visibility_of_element_located(self.MODAL)
         ).text
+    def get_villes_list(self):
+    """Récupère la liste des villes depuis le dropdown"""
+    select = Select(self.driver.find_element(*self.VILLE_SELECT))
+    return [option.text for option in select.options if option.text.strip()]
