@@ -1,0 +1,5 @@
+# Fichier des dépendances
+selenium==4.15.0  # Framework de test web
+pytest==7.4.3  # Runner de tests
+webdriver-manager==4.0.1  # Gestion automatique des drivers
+pytest-html==4.1.1  # Génération de rapports
