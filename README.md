@@ -15,7 +15,7 @@ Approche : Page Object Pattern, tests paramétrés, priorisation business
 
 ### Installation
 ```bash
-git clone https://github.com/samirelaiss/test_formulaire_weekend.git
+git clone https://github.com/samirelaiss/test-formulaire-weekend.git
 cd test_formulaire_weekend
 pip install -r requirements.txt
 ```
