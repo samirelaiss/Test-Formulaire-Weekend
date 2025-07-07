@@ -84,7 +84,7 @@ test-formulaire-weekend/
 
 Métriques :
 - 8 tests automatisés
-- 90% de couverture fonctionnelle
+- ~90% de couverture fonctionnelle
 - Logs complets dans `test_execution.log`
 
 Points forts :
