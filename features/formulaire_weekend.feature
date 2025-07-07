@@ -1,33 +1,46 @@
-"""
-Fonctionnalité: Formulaire de réservation week-end
-Critère métier principal : 
-Le système doit valider que chaque soumission contient 
-soit un email valide, soit un numéro de téléphone valide
-"""
+Fonctionnalité: Validation du formulaire de réservation week-end
 
-# Scénario principal - Chemin heureux
-Scenario: Soumission valide avec email professionnel
-    Given Je suis sur la page du formulaire
-    # Données de test génériques respectant RFC 2606
-    When Je remplis le champ "Nom" avec "QA_Engineer"
-    And Je remplis le champ "Prénom" avec "Test_Auto"
-    And Je sélectionne la première ville disponible
-    And Je remplis le champ "Email" avec "automation@example.org"
-    And Je clique sur "Envoyer"
-    Then Je vois la confirmation "Merci pour vos informations"
+  Scenario: Soumission valide avec email
+    Étant donné que je suis sur la page du formulaire
+    Quand je remplis le champ "Nom" avec "Tester_QA"
+    Et je remplis le champ "Prénom" avec "Automation"
+    Et je sélectionne "Lyon" dans la liste des villes
+    Et je remplis le champ "Email" avec "qa.tester@example.org"
+    Et je clique sur le bouton "Envoyer"
+    Alors je vois le message "Merci pour vos informations"
+    Et le formulaire disparaît
 
-# Scénario alternatif
-Scenario: Soumission avec téléphone uniquement
-    Given Je suis sur la page du formulaire
-    # Numéro fictif respectant le format français
-    When Je remplis le champ "Téléphone" avec "0612345678"
-    And Je remplis les autres champs obligatoires
-    And Je clique sur "Envoyer"
-    Then Le système accepte la soumission
+  Scenario: Soumission valide avec téléphone
+    Étant donné que je suis sur la page du formulaire
+    Quand je remplis le champ "Nom" avec "Test_Perf"
+    Et je remplis le champ "Prénom" avec "Load_Runner"
+    Et je sélectionne "Marseille" dans la liste des villes
+    Et je remplis le champ "Téléphone" avec "0698765432"
+    Et je clique sur le bouton "Envoyer"
+    Alors je vois le message de confirmation
+    Et le formulaire disparaît
 
-# Scénario d'erreur
-Scenario: Rejet si aucun contact fourni
-    Given Je remplis tous les champs sauf email et téléphone
-    When Je tente de soumettre le formulaire
-    Then Je vois l'erreur "Contact obligatoire"
-    And Le formulaire n'est pas masqué
+  Scenario: Soumission invalide - champs manquants
+    Étant donné que je suis sur la page du formulaire
+    Quand je remplis le champ "Nom" avec "Test_Error"
+    Et je laisse le champ "Prénom" vide
+    Et je clique sur le bouton "Envoyer"
+    Alors je vois le message d'erreur "Champ obligatoire"
+    Et le formulaire reste visible
+
+  Scenario: Chargement des villes
+    Étant donné que la page du formulaire est chargée
+    Alors la liste déroulante "Ville" contient au moins 10 villes
+    Et les villes sont triées par ordre décroissant de population
+    Et "Paris" apparaît en première position
+
+  Scenario: Protection contre XSS
+    Étant donné que je suis sur la page du formulaire
+    Quand je remplis le champ "Nom" avec "<script>alert('attack')</script>"
+    Et je remplis les autres champs obligatoires :
+      | Prénom    | Security_Test |
+      | Ville     | Nice          |
+      | Email     | safe@example.org |
+    Et je clique sur "Envoyer"
+    Alors le script ne s'exécute pas
+    Et je vois le message de confirmation normal
