@@ -72,8 +72,6 @@ test-formulaire-weekend/
 │   └── test_api_integration.py     # Tests API avec gestion erreurs
 ├── pages/                   
 │   └── formulaire_page.py          # PO avec logging intégré
-├── features/                
-│   └── formulaire_weekend.feature
 ├── conftest.py             # Configuration pytest + logging
 ├── requirements.txt        
 └── README.md              
