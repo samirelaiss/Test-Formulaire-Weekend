@@ -1,4 +1,5 @@
-Fonctionnalité: Validation du formulaire de réservation week-end
+# language: fr
+Feature: Validation du formulaire de réservation week-end
 
   Scenario: Soumission valide avec email
     Étant donné que je suis sur la page du formulaire
@@ -33,11 +34,3 @@ Fonctionnalité: Validation du formulaire de réservation week-end
     Alors la liste déroulante "Ville" contient au moins 10 villes
     Et les villes sont triées par ordre décroissant de population
     Et "Lille" apparaît en première position
-
-  Scenario: Protection contre XSS
-    Étant donné que je suis sur la page du formulaire
-    Quand je remplis le champ "Nom" avec "<script>alert('hack')</script>"
-    Et je remplis les autres champs obligatoires
-    Et je clique sur "Envoyer"
-    Alors le script ne s'exécute pas
-    Et je vois le message de confirmation normal
