@@ -34,16 +34,16 @@ pytest --html=report.html --self-contained-html
 
 ## Stratégie de Test
 
-### Priorisation (2h max)
-1. **Priorité 1** (60 min) :  
+### Priorisation 
+1. **Priorité 1** :  
    - Validation formulaire  
    - Règles métier critiques  
 
-2. **Priorité 2** (30 min) :  
+2. **Priorité 2** :  
    - Intégration API  
    - Fonctionnalités UI  
 
-3. **Documentation** (15 min) :  
+3. **Documentation** :  
    - README et structure projet  
 
 ## Architecture
