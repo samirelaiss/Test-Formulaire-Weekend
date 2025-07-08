@@ -65,7 +65,6 @@ test-formulaire-weekend/
 **Métriques** :
 - 6 tests automatisés  
 - Couverture des cas critiques  
-- Temps d'exécution : < 2 minutes  
 
 **Points forts** :
 - Architecture modulaire  
