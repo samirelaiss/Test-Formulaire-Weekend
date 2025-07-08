@@ -56,6 +56,7 @@ test-formulaire-weekend/
 ├── pages/                   
 │   └── formulaire_page.py          # Page Object
 ├── conftest.py             # Configuration pytest
+├── tests_gherkin.txt
 ├── requirements.txt        
 └── README.md              
 ```
