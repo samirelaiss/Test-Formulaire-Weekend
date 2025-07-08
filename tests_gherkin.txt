@@ -1,4 +1,3 @@
-# language: fr
 Feature: Validation du formulaire de réservation week-end
 
   Scenario: Soumission valide avec email
